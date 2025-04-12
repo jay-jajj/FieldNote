@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../css/SectorForm.module.css';
 
 export default function SectorForm() {
+//sector 종료후 기본적으로 적어야 하는 정보
   const [date, setDate] = useState('');
   const [sectorName, setSectorName] = useState('');
   const [location, setLocation] = useState('');
@@ -9,19 +10,25 @@ export default function SectorForm() {
   const [donors40plus, setDonors40plus] = useState('');
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0]; // 날짜 자동입력
     setDate(today);
   }, []);
 
+  //섹터원 정보 input에 입력할때 저장하는 함수
   const handleMemberChange = (index, field, value) => {
     const updated = [...members];
     updated[index][field] = value;
     setMembers(updated);
   };
-
+  //입력칸 추가
   const addMember = () => {
     setMembers([...members, { name: '', count: '' }]);
   };
+  //입력칸 제거
+  const deleteMember = (index) =>{
+    let editedMembers = members.splice(index)
+    setMembers(editedMembers)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,8 +53,9 @@ export default function SectorForm() {
 
         <label>Sector Name</label>
         <input
+          className={styles.baseInput}
           type="text"
-          placeholder="Enter sector name"
+          placeholder="섹터명을 입력해주세요"
           value={sectorName}
           onChange={(e) => setSectorName(e.target.value)}
         />
@@ -56,7 +64,7 @@ export default function SectorForm() {
         <div className={styles.locationRow}>
           <input
             type="text"
-            placeholder="Search or select location"
+            placeholder="아이콘을 클릭하여 위치값을 입력해주세요"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
           />
@@ -70,16 +78,17 @@ export default function SectorForm() {
           <div key={idx} className={styles.memberRow}>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="이름"
               value={member.name}
               onChange={(e) => handleMemberChange(idx, 'name', e.target.value)}
             />
             <input
               type="number"
-              placeholder="Sales Count"
+              placeholder="세일즈 개수"
               value={member.count}
               onChange={(e) => handleMemberChange(idx, 'count', e.target.value)}
             />
+            {idx != 0 ?  <span onClick={(e)=>deleteMember(idx)}>❌</span> : ""}
           </div>
         ))}
         <button type="button" className={styles.addBtn} onClick={addMember}>
@@ -93,7 +102,7 @@ export default function SectorForm() {
           type="number"
           value={donors40plus}
           onChange={(e) => setDonors40plus(e.target.value)}
-          placeholder="Number"
+          placeholder="40대이상 후원자수"
         />
       </div>
 

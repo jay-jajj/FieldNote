@@ -1,0 +1,23 @@
+:root {
+    --bg: #ffffff;
+    --card-bg: #f9f9f9;
+    --text: #000000;
+    --subtext: #666666;
+    --primary: #007aff;
+    --border: #dddddd;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --text: #f1f1f1;
+      --subtext: #aaaaaa;
+      --primary: #0a84ff;
+      --border: #333333;
+    }
+  }
+
+ body{
+  margin: 0;
+ }
