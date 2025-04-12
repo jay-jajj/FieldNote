@@ -1,0 +1,136 @@
+:root {
+    --bg: #ffffff;
+    --card-bg: #f9f9f9;
+    --text: #000000;
+    --subtext: #666666;
+    --primary: #007aff;
+    --border: #dddddd;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --card-bg: #1e1e1e;
+      --text: #f1f1f1;
+      --subtext: #aaaaaa;
+      --primary: #0a84ff;
+      --border: #333333;
+    }
+  }
+  
+  .form {
+    background-color: var(--bg);
+    color: var(--text);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    font-family: 'Pretendard', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .card {
+    background-color: var(--card-bg);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .staticText {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .locationRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .mapIcon {
+    font-size: 18px;
+  }
+  
+  .section {
+    margin-bottom: 24px;
+  }
+  
+  .sectionTitle {
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+  
+  .memberRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: transparent;
+    color: var(--text);
+    transition: border 0.2s ease, transform 0.2s ease;
+  }
+  
+  input:focus {
+    border-color: var(--primary);
+    outline: none;
+    transform: scale(1.02);
+  }
+  
+  .addBtn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 14px;
+    padding: 6px 0;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+  }
+  
+  .addBtn:hover {
+    color: #0051c9;
+  }
+  
+  .submitBtn {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+  
+  .submitBtn:active {
+    transform: scale(0.97);
+  }
+  
+  /* 태블릿 이상부터 멤버 입력 가로 정렬 */
+  @media (min-width: 481px) {
+    .memberRow {
+      flex-direction: row;
+    }
+  }
